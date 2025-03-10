@@ -13,9 +13,9 @@ LIMIT 5;
 
 SELECT client_id
 FROM client
-where district_id = 72
+WHERE district_id = 72
 ORDER BY client_id DESC
-limit 1;
+LIMIT 1;
 
 
 --- Query 3
@@ -40,7 +40,7 @@ LIMIT 1;
 
 --- Query 6
 
-SELECT account_id as '#id', amount
+SELECT account_id AS '#id', amount
 FROM loan
 ORDER BY account_id ASC
 LIMIT 5;
@@ -69,7 +69,7 @@ WHERE account_id = 34;
 
 SELECT DISTINCT account_id
 FROM `order`
-WHERE order_id BETWEEN 29540 and 29560;
+WHERE order_id BETWEEN 29540 AND 29560;
 
 --- Query 11
 
@@ -103,6 +103,7 @@ ORDER BY COUNT(card_id) DESC;
 
 SELECT account_id, SUM(amount)
 FROM loan
+GROUP BY account_id
 ORDER BY SUM(amount) DESC
 LIMIT 10;
 
@@ -121,14 +122,13 @@ SELECT date, duration, COUNT(loan_id)
 FROM loan
 WHERE date LIKE '9712%'
 GROUP BY date, duration
-##HAVING COUNT(loan_id) > 0 not needed due to group by
 ORDER BY date ASC, duration ASC;
 
 
 --- Query 18
 
-SELECT account_id, type, sum(amount) as total_amount
+SELECT account_id, type, sum(amount) AS total_amount
 FROM trans
 WHERE account_id = 396
-GROUP BY account_id, type
+GROUP BY type
 ORDER BY type ASC;
